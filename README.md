@@ -1,11 +1,15 @@
+
 ## Custom Wordlist
-This repo is about steps to take in order to create a effective custom wordlist in a few clicks. this comes handing in pentesting engagement where you need to do brute force attacks.
-So the main probleme is that you have 0 chance to get that valide account when you use a random wordlist that contain passwords that don't match your client password policy, 
-Well to build this effective custom wordlist that match what ever password policy your client uses: 
+In brute force attacks, you need to create a effective wordlist, one that is adapted to your target in termes of **used words** and **password complexity requirements**
+This python script help to filter out of scope password in termes complexity.
+the necessary steps to make a wordlsit are :
+- create rich text file 
+- tamper with the words
+- filter out the result
 ### Create rich text file
 we start with some OSINT to gather commun words used by the client such as : company name, company's services, ... then save this in a file.txt 
 ### Tamper with the wordlist  
-start thempering with it (add 2020 at the end, change a with @, and so on) . 
+start thempering with it (add **2020 - 2021 - 2022** at the end, change **a** with **@**, and so on) . 
 ```bash 
 for i in $(cat words.txt);do echo $i; echo ${i}2020; echo ${i}2021; echo ${i}2022;done > words2.txt 
 ```
