@@ -17,5 +17,21 @@ you cloud also create your own rules, it's pretty fun.
 ### Filter result 
 Now that you have created a custom wordlist, you need to remove all passwords that don't match your client password policy (mostly Microsoft default password complexity) for that i create this small python script which do just that for you. 
 ```bash
-./filter.py test1.txt -c
+./filter.py -h           
+usage: filter.py [-h] [-c] [-m MIN_LENGTH] [--max-length MAX_LENGTH] [-w WORD [WORD ...]] [-s] [-t TOP] file [file ...]
+
+positional arguments:
+  file                  Wordlist file
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -c, --complexity      Filter with Microsoft complexity filter (does not affect minimum length)
+  -m MIN_LENGTH, --min-length MIN_LENGTH
+                        Minimum length
+  --max-length MAX_LENGTH
+                        Maximum length
+  -w WORD [WORD ...], --word WORD [WORD ...]
+                        Wordlist on command line
+  -s, --sort            Sort unique
+  -t TOP, --top TOP     Take the top X words
 ```
