@@ -39,3 +39,20 @@ optional arguments:
   -s, --sort            Sort unique
   -t TOP, --top TOP     Take the top X words
 ```
+### Replace
+We replace o with 0 and a with @ 
+so that **Password** becomes **P@ssw0rd**
+```bash
+# Read in the file
+ourfile = input( "file name> " )
+with open(ourfile, 'r') as file :
+  filedata = file.read()
+
+# Replace the target string
+filedata = filedata.replace('o', '0').replace('a', '@')
+
+# Write the file out again
+with open(ourfile, 'w') as file:
+  file.write(filedata)
+```
+![image](https://user-images.githubusercontent.com/95150458/150571393-a5133d80-ee8b-4108-bfa4-fa3a82410b45.png)
