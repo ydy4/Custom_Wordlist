@@ -5,8 +5,8 @@ This python script help to filter out of scope password in termes complexity.
 the necessary steps to make a wordlsit are :
 - create rich text file 
 - tamper with the words
-- filter out the result
 - replace with special chars
+- filter out the result
 ### Create rich text file
 we start with some OSINT to gather commun words used by the client such as : company name, company's services, ... then save this in a file.txt 
 ### Tamper with the wordlist  
@@ -25,7 +25,24 @@ you cloud also create your own rules, here is a simple rule file to add special 
 using this rule 
 
 ![image](https://user-images.githubusercontent.com/95150458/150603051-68f7412c-2895-43cd-82e1-b698b62f65c7.png)
+### Replace
+We replace **o** with **0** and **a** with **@**
+so that words like **Password** become like this **P@ssw0rd**
+```bash
+# Read in the file
+ourfile = input( "file name> " )
+with open(ourfile, 'r') as file :
+  filedata = file.read()
 
+# Replace the target string
+filedata = filedata.replace('o', '0').replace('a', '@')
+
+# Write the file out again
+with open(ourfile, 'w') as file:
+  file.write(filedata)
+```
+
+![image](https://user-images.githubusercontent.com/95150458/150602669-d5398e30-0def-49b1-949a-76d07b56bd50.png)
 
 ### Filter result 
 Now that you have created a custom wordlist, you need to remove all passwords that don't match your client password policy (mostly Microsoft default password complexity) for that i create this small python script which do just that for you. 
@@ -48,22 +65,3 @@ optional arguments:
   -s, --sort            Sort unique (remove duplicates)
   -t TOP, --top TOP     Take the top X words
 ```
-### Replace
-We replace **o** with **0** and **a** with **@**
-so that words like **Password** become like this **P@ssw0rd**
-```bash
-# Read in the file
-ourfile = input( "file name> " )
-with open(ourfile, 'r') as file :
-  filedata = file.read()
-
-# Replace the target string
-filedata = filedata.replace('o', '0').replace('a', '@')
-
-# Write the file out again
-with open(ourfile, 'w') as file:
-  file.write(filedata)
-```
-
-![image](https://user-images.githubusercontent.com/95150458/150602669-d5398e30-0def-49b1-949a-76d07b56bd50.png)
-
