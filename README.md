@@ -1,5 +1,5 @@
 
-## Custom Wordlist
+# Custom Wordlist
 In brute force attacks, you need to create a effective wordlist, one that is adapted to your target in termes of **used words** and **password complexity requirements**
 This python script help to filter out of scope password in termes complexity.
 the necessary steps to make a wordlsit are :
@@ -7,9 +7,9 @@ the necessary steps to make a wordlsit are :
 - tamper with the words
 - replace with special chars
 - filter out the result
-### Create rich text file
+## Create rich text file
 we start with some OSINT to gather commun words used by the client such as : company name, company's services, ... then save this in a file.txt 
-### Tamper with the wordlist  
+## Tamper with the wordlist  
 start tampering with it (add **2020 - 2021 - 2022** at the end) . 
 ```bash 
 for i in $(cat words.txt);do echo $i; echo ${i}2020; echo ${i}2021; echo ${i}2022;done > words2.txt 
@@ -25,7 +25,7 @@ you cloud also create your own rules, here is a simple rule file to add special 
 using this rule 
 
 ![image](https://user-images.githubusercontent.com/95150458/150603051-68f7412c-2895-43cd-82e1-b698b62f65c7.png)
-### Replace
+## Replace
 We replace **o** with **0** and **a** with **@**
 so that words like **Password** become like this **P@ssw0rd**
 ```bash
@@ -44,7 +44,7 @@ with open(ourfile, 'w') as file:
 
 ![image](https://user-images.githubusercontent.com/95150458/150602669-d5398e30-0def-49b1-949a-76d07b56bd50.png)
 
-### Filter result 
+## Filter result 
 Now that you have created a custom wordlist, you need to remove all passwords that don't match your client password policy (mostly Microsoft default password complexity) for that i create this small python script which do just that for you. 
 ```bash
 ./filter.py -h           
