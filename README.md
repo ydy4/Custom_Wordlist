@@ -6,6 +6,7 @@ the necessary steps to make a wordlsit are :
 - create rich text file 
 - tamper with the words
 - filter out the result
+- replace with special chars
 ### Create rich text file
 we start with some OSINT to gather commun words used by the client such as : company name, company's services, ... then save this in a file.txt 
 ### Tamper with the wordlist  
