@@ -10,7 +10,7 @@ the necessary steps to make a wordlsit are :
 ### Create rich text file
 we start with some OSINT to gather commun words used by the client such as : company name, company's services, ... then save this in a file.txt 
 ### Tamper with the wordlist  
-start thempering with it (add **2020 - 2021 - 2022** at the end, change **a** with **@**, and so on) . 
+start thempering with it (add **2020 - 2021 - 2022** at the end) . 
 ```bash 
 for i in $(cat words.txt);do echo $i; echo ${i}2020; echo ${i}2021; echo ${i}2022;done > words2.txt 
 ```
@@ -18,7 +18,11 @@ Now use hashcat rules to temper further
 ```bash
 hashcat --force words2.txt -r /usr/share/hashcat/rules/best64.rule -r /usr/share/hashcat/rules/toggles5.rule --stdout > wordlistfinal.txt 
 ```
-you cloud also create your own rules, it's pretty fun. 
+you cloud also create your own rules, here is a simple rule file to add special chars at the end 
+![image](https://user-images.githubusercontent.com/95150458/150603010-bd32f461-0be3-41f7-99a9-5f719d510586.png)
+using this rule 
+![image](https://user-images.githubusercontent.com/95150458/150603051-68f7412c-2895-43cd-82e1-b698b62f65c7.png)
+
 ### Filter result 
 Now that you have created a custom wordlist, you need to remove all passwords that don't match your client password policy (mostly Microsoft default password complexity) for that i create this small python script which do just that for you. 
 ```bash
@@ -37,12 +41,12 @@ optional arguments:
                         Maximum length
   -w WORD [WORD ...], --word WORD [WORD ...]
                         Wordlist on command line
-  -s, --sort            Sort unique
+  -s, --sort            Sort unique (remove duplicates)
   -t TOP, --top TOP     Take the top X words
 ```
 ### Replace
 We replace o with 0 and a with @ 
-so that **Password** becomes **P@ssw0rd**
+so that words like **Password** become like this **P@ssw0rd**
 ```bash
 # Read in the file
 ourfile = input( "file name> " )
@@ -56,4 +60,4 @@ filedata = filedata.replace('o', '0').replace('a', '@')
 with open(ourfile, 'w') as file:
   file.write(filedata)
 ```
-![image](https://user-images.githubusercontent.com/95150458/150571393-a5133d80-ee8b-4108-bfa4-fa3a82410b45.png)
+![image](https://user-images.githubusercontent.com/95150458/150602669-d5398e30-0def-49b1-949a-76d07b56bd50.png)
