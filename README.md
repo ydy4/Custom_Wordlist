@@ -10,11 +10,11 @@ the necessary steps to make a wordlsit are :
 ### Create rich text file
 we start with some OSINT to gather commun words used by the client such as : company name, company's services, ... then save this in a file.txt 
 ### Tamper with the wordlist  
-start thempering with it (add **2020 - 2021 - 2022** at the end) . 
+start tampering with it (add **2020 - 2021 - 2022** at the end) . 
 ```bash 
 for i in $(cat words.txt);do echo $i; echo ${i}2020; echo ${i}2021; echo ${i}2022;done > words2.txt 
 ```
-Now use hashcat rules to temper further 
+Now use hashcat rules to tamper further 
 ```bash
 hashcat --force words2.txt -r /usr/share/hashcat/rules/best64.rule -r /usr/share/hashcat/rules/toggles5.rule --stdout > wordlistfinal.txt 
 ```
@@ -45,7 +45,7 @@ optional arguments:
   -t TOP, --top TOP     Take the top X words
 ```
 ### Replace
-We replace o with 0 and a with @ 
+We replace **o** with **0** and **a** with **@**
 so that words like **Password** become like this **P@ssw0rd**
 ```bash
 # Read in the file
