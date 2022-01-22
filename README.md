@@ -47,7 +47,15 @@ with open(ourfile, 'w') as file:
 ## Filter result 
 Now that you have created a custom wordlist, you need to remove all passwords that don't match your client password policy (mostly Microsoft default password complexity) for that i create this small python script which do just that for you. 
 ```bash
-./filter.py -h           
+python3 filter.py -h                                                                                                                        1 ⚙
+
+ ____    _  _____  _                    _            _   
+|  _ \  / \|_   _|/ \   _ __  _ __ ___ | |_ ___  ___| |_ 
+| | | |/ _ \ | | / _ \ | '_ \| '__/ _ \| __/ _ \/ __| __|
+| |_| / ___ \| |/ ___ \| |_) | | | (_) | ||  __/ (__| |_ 
+|____/_/   \_\_/_/   \_\ .__/|_|  \___/ \__\___|\___|\__|
+                       |_|                               
+
 usage: filter.py [-h] [-c] [-m MIN_LENGTH] [--max-length MAX_LENGTH] [-w WORD [WORD ...]] [-s] [-t TOP] file [file ...]
 
 positional arguments:
@@ -62,6 +70,5 @@ optional arguments:
                         Maximum length
   -w WORD [WORD ...], --word WORD [WORD ...]
                         Wordlist on command line
-  -s, --sort            Sort unique (remove duplicates)
-  -t TOP, --top TOP     Take the top X words
+  -s, --sort            Sort unique
 ```
